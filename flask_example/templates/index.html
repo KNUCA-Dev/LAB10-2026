@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Голосування за фото</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Обери найкраще фото тижня!</h1>
+    <div class="photos">
+        {% for photo in photos %}
+        <div class="photo">
+            <img src="{{ url_for('static', filename='photos/' + photo) }}" alt="{{ photo }}">
+            <button class="vote-button" data-photo-id="{{ photo }}">Голосувати</button>
+            <p>Голосів: <span id="votes-{{ photo }}">{{ votes.get(photo, 0) }}</span></p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="results-link">
+        <a href="/results">Переглянути результати</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

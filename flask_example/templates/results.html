@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Результати голосування</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Результати голосування</h1>
+    <ul>
+        {% for photo, count in votes %}
+        <li>{{ photo }}: {{ count }} голосів</li>
+        {% endfor %}
+    </ul>
+    <a href="/">На головну</a>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"image (4).png": 10, "image (5).png": 7, "image (6).png": 6}

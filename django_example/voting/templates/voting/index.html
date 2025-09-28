@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Голосування за фільм</title>
+    <link rel="stylesheet" href="{% static 'voting/style.css' %}">
+</head>
+<body>
+    <h1>Обери найкращий фільм року!</h1>
+    <div class="movies">
+        {% for movie in movies %}
+        <div class="movie">
+            {% if movie.poster %}
+                <img src="{{ movie.poster.url }}" alt="{{ movie.title }}">
+            {% endif %}
+            <h3>{{ movie.title }}</h3>
+            <button class="vote-button" data-movie-id="{{ movie.id }}">Голосувати</button>
+            <p>Голосів: <span id="votes-{{ movie.id }}">{{ movie.votes_count }}</span></p>
+        </div>
+        {% empty %}
+        <p>Наразі фільмів для голосування немає. Зайдіть пізніше.</p>
+        {% endfor %}
+    </div>
+
+    <div class="results-link">
+        <a href="{% url 'voting:results' %}">Переглянути результати</a>
+    </div>
+
+    <script src="{% static 'voting/script.js' %}"></script>
+</body>
+</html>

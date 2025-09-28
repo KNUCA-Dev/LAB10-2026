@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Результати голосування</title>
+    <link rel="stylesheet" href="{% static 'voting/style.css' %}">
+</head>
+<body>
+    <h1>Результати голосування</h1>
+    <ul>
+        {% for movie in votes_data %}
+        <li>{{ movie.title }}: {{ movie.votes_count }} голосів</li>
+        {% empty %}
+        <li>Голосів ще немає.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'voting:index' %}">На головну</a>
+</body>
+</html>
